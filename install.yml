@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
     portainer:
-        image: portainer/portainer-ce:2.5.0-alpine
+        image: portainer/portainer-ce:2.5.1-alpine
 
         ports:
             - "9900:9000"
@@ -22,7 +22,10 @@ services:
                 io.kubernetes.container.name: POD
                 io.kubernetes.docker.type: container
         
-        command: --admin-password-file '/run/secrets/portainer-pass' -H unix:///var/run/docker.sock --hide-label com.docker.swarm.service.name=utils_portainer
+        command: >
+            -H unix:///var/run/docker.sock
+            --admin-password-file '/run/secrets/portainer-pass'
+            --hide-label com.docker.swarm.service.name=utils_portainer
 
         secrets:
             - portainer-pass

@@ -1,4 +1,4 @@
-# Install Portainer 2.5.0 Docker Stack
+# Install Portainer 2.5.1 Docker Stack
 
 ```shell
 $ echo -n password | docker secret create portainer-pass -
